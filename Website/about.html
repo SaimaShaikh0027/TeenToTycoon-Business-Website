@@ -1,0 +1,733 @@
+.html next.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Teen 2 Tycoon | T2T</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
+    
+    <!-- Google Analytics 4 -->
+    <!-- Replace GA_MEASUREMENT_ID with your actual measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <style>
+        /* Enhanced Hero Section for About Page */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0A0E1A 0%, #1E3A8A 30%, #667eea 70%, #f093fb 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(240, 147, 251, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.2) 0%, transparent 60%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+        
+        @keyframes heroGlow {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Floating particles */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #667eea 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #f093fb 1px, transparent 1px),
+                radial-gradient(circle at 50% 10%, #60a5fa 1px, transparent 1px),
+                radial-gradient(circle at 80% 90%, #a855f7 1px, transparent 1px);
+            background-size: 120px 120px, 80px 80px, 140px 140px, 100px 100px;
+            background-position: 0 0, 40px 40px, 0 40px, 40px 0;
+            animation: floatParticles 25s linear infinite;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        @keyframes floatParticles {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 80px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 30%, #e0e7ff 70%, #f3e8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 0.9;
+            text-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+            animation: titlePulse 4s ease-in-out infinite alternate;
+            position: relative;
+        }
+        
+        @keyframes titlePulse {
+            0% { 
+                transform: scale(1); 
+                filter: brightness(1);
+            }
+            100% { 
+                transform: scale(1.02); 
+                filter: brightness(1.1);
+            }
+        }
+        
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #f093fb);
+            border-radius: 2px;
+            animation: titleUnderline 3s ease-in-out infinite;
+        }
+        
+        @keyframes titleUnderline {
+            0%, 100% { width: 100px; opacity: 0.7; }
+            50% { width: 200px; opacity: 1; }
+        }
+        
+        /* Enhanced floating cards with better positioning */
+        .hero-3d {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+        }
+        
+        .card-1 {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        
+        .card-2 {
+            top: 20%;
+            right: 8%;
+            animation-delay: 1.5s;
+        }
+        
+        .card-3 {
+            bottom: 20%;
+            left: 12%;
+            animation-delay: 3s;
+        }
+        
+        .card-4 {
+            bottom: 15%;
+            right: 12%;
+            animation-delay: 4.5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .card-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .card-content i {
+            font-size: 36px;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .card-content p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .ceo-section {
+            padding: 80px 0;
+        }
+        
+        .ceo-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .ceo-image {
+            flex: 0 0 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #667eea;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+        }
+        
+        .ceo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ceo-info h3 {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .ceo-info .role {
+            font-size: 18px;
+            color: #f093fb;
+            margin-bottom: 20px;
+        }
+        
+        .ceo-info .quote {
+            font-size: 18px;
+            color: #aaa;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .ceo-info p {
+            font-size: 16px;
+            color: #ddd;
+            line-height: 1.8;
+        }
+        
+        .objectives-section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .objective-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .objective-card h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .objective-card h3 i {
+            color: #667eea;
+        }
+        
+        .objective-card p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        .achievements-section {
+            padding: 80px 0;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .achievement-card .year {
+            font-size: 14px;
+            color: #f093fb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .achievement-card h4 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-card p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .achievement-card i {
+            font-size: 40px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+                line-height: 1.1;
+            }
+            
+            .hero-title::before {
+                width: 60px;
+            }
+            
+            .floating-card {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            
+            .card-content i {
+                font-size: 28px;
+            }
+            
+            .card-content h3 {
+                font-size: 18px;
+            }
+            
+            .card-content p {
+                font-size: 12px;
+            }
+            
+            .card-1 {
+                top: 8%;
+                left: 5%;
+            }
+            
+            .card-2 {
+                top: 12%;
+                right: 5%;
+            }
+            
+            .card-3 {
+                bottom: 12%;
+                left: 8%;
+            }
+            
+            .card-4 {
+                bottom: 8%;
+                right: 8%;
+            }
+            
+            .ceo-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            
+            .ceo-image {
+                flex: 0 0 200px;
+                width: 200px;
+            }
+            
+            .objectives-grid,
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 15px 60px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .floating-card {
+                padding: 15px;
+            }
+            
+            .card-content i {
+                font-size: 24px;
+            }
+            
+            .card-content h3 {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            
+            .card-content p {
+                font-size: 11px;
+            }
+            
+            .card-1 {
+                top: 5%;
+                left: 3%;
+            }
+            
+            .card-2 {
+                top: 8%;
+                right: 3%;
+            }
+            
+            .card-3 {
+                bottom: 8%;
+                left: 5%;
+            }
+            
+            .card-4 {
+                bottom: 5%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/T2Thomelogo.png" alt="Teen 2 Tycoon" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#" class="active">Events</a>
+                    <div class="dropdown-content">
+                        <a href="skill-fest.html">Skill Fest</a>
+                        <a href="summercamp.html" class="active">Summer Camp</a>
+                        <a href="euforic.html">Euforic</a>
+                        <a href="dream-campus.html">Dream Campus</a>
+                    </div>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: none;">
+        <div class="hero-3d">
+            <!-- <div class="floating-card card-1">
+                <div class="card-content">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Innovation</h3>
+                    <p>Building future leaders</p>
+                </div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="card-content">
+                    <i class="fas fa-users"></i>
+                    <h3>22+</h3>
+                    <p>Teen Co-Founders</p>
+                </div>
+            </div>
+            <div class="floating-card card-3">
+                <div class="card-content">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Success</h3>
+                    <p>Creating Tycoons</p>
+                </div>
+            </div>
+            <div class="floating-card card-4">
+                <div class="card-content">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Ideas</h3>
+                    <p>To Reality</p>
+                </div>
+            </div> -->
+        </div>
+        <div class="hero-content">
+            <h2 class="hero-title">About Teen 2 Tycoon</h2>
+            <br>
+            <p>Teen 2 Tycoon (T2T) is an entrepreneurial development and youth innovation platform established with the vision to nurture young minds into future business leaders. Founded and directed by Mr. Ilyas Ansari, the organization is powered by a team of 22 teenage co-founders who represent the next generation of innovators, creators, and change-makers.</p>
+            <br>
+                <p>T2T stands as a revolutionary youth-led initiative in India, bridging the gap between traditional education and practical entrepreneurship. The platform introduces real-world business exposure, leadership experiences, and innovation challenges to students from an early age, helping them transform ideas into enterprises.</p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">Learn More</a>
+                <a href="contact.html" class="btn btn-secondary">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About T2T Section -->
+    <!-- <section class="brief-info">
+        <div class="container">
+            <div class="section-header">
+                <h2>About T2T</h2>
+            </div>
+            <div class="brief-content">
+                <p>Teen 2 Tycoon (T2T) is an entrepreneurial development and youth innovation platform established with the vision to nurture young minds into future business leaders. Founded and directed by Mr. Ilyas Ansari, the organization is powered by a team of 22 teenage co-founders who represent the next generation of innovators, creators, and change-makers.</p>
+                <br>
+                <p>T2T stands as a revolutionary youth-led initiative in India, bridging the gap between traditional education and practical entrepreneurship. The platform introduces real-world business exposure, leadership experiences, and innovation challenges to students from an early age, helping them transform ideas into enterprises.</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CEO Statement Section -->
+    <section class="ceo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>CEO Statement</h2>
+            </div>
+            <div class="ceo-card">
+                <div class="ceo-image">
+                    <img src="img/CEO.jpg" alt="Mr. Ilyas Ansari">
+                </div>
+                <div class="ceo-info">
+                    <h3>Mr. Ilyas Ansari</h3>
+                    <p class="role">Founder & Director, Teen 2 Tycoon</p>
+                    <p class="quote">"Our schools teach us how to follow; T2T teaches how to lead."</p>
+                    <p>A visionary entrepreneur and hotelier, Mr. Ansari began his professional journey with international experience at Fairmont Grand Del Mar, San Diego, USA, in Room Division Management. His exposure to global hospitality and management inspired him to return to India with a mission to foster entrepreneurial skills among young minds.</p>
+                    <br>
+                    <p>Through his leadership, T2T has evolved into a multi-vertical platform integrating event management, social media strategy, and entrepreneurial education — all centered on empowering the youth to build businesses from a young age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section class="objectives-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Objectives</h2>
+                <p>To redefine India's education-to-employment pipeline</p>
+            </div>
+            <div class="objectives-grid">
+                <div class="objective-card" data-tilt>
+                    <h3><i class="fas fa-eye"></i> Vision</h3>
+                    <p>To redefine India's education-to-employment pipeline by producing employers, not employees, and building a community of young entrepreneurs who drive sustainable change.</p>
+                </div>
+                <div class="objective-card" data-tilt>
+                    <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                    <p>To transform students into confident, skilled, and future-ready individuals by integrating entrepreneurship, creativity, and practical learning with education.</p>
+                </div>
+                <div class="objective-card" data-tilt>
+                    <h3><i class="fas fa-rocket"></i> Goal</h3>
+                    <p>To cultivate entrepreneurial thinking and leadership qualities among teenagers by providing a platform that encourages creativity, innovation, and action-driven learning.</p>
+                </div>
+                <div class="objective-card" data-tilt>
+                    <h3><i class="fas fa-star"></i> Impact</h3>
+                    <p>To create a generation of job creators instead of job seekers, empowering youth to build sustainable businesses and contribute to India's economic growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Achievements</h2>
+                <p>Recognition for excellence in youth empowerment</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card" data-tilt>
+                    <i class="fas fa-trophy"></i>
+                    <p class="year">2020</p>
+                    <h4>OMG Book of Records</h4>
+                    <p>Recognized as the World's First Company Launched by Teen Entrepreneurs during the pandemic, officially documented in the OMG Book of Records, India.</p>
+                </div>
+                <div class="achievement-card" data-tilt>
+                    <i class="fas fa-award"></i>
+                    <p class="year">2021</p>
+                    <h4>Youth Leadership Appreciation</h4>
+                    <p>Received formal appreciation for active leadership and event collaboration in a community-based youth empowerment initiative.</p>
+                </div>
+                <div class="achievement-card" data-tilt>
+                    <i class="fas fa-certificate"></i>
+                    <p class="year">2025</p>
+                    <h4>MCOA Recognition</h4>
+                    <p>Awarded by the MAHARASHTRA CLASS OWNERS' ASSOCIATION for excellence in event management and youth leadership during the MCOA Annual Function.</p>
+                </div>
+                <div class="achievement-card" data-tilt>
+                    <i class="fas fa-medal"></i>
+                    <p class="year">2025</p>
+                    <h4>SLR Education Honour</h4>
+                    <p>T2T was honoured by SLR Education for its exceptional contribution in organising and managing the Maharashtra Shikshan Award ceremony.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join the T2T Family</h2>
+                <p>Be part of the revolution in youth entrepreneurship</p>
+                <div class="cta-buttons">
+                    <a href="contact.html?type=member" class="btn btn-cta btn-primary">Join as a Member</a>
+                    <a href="contact.html?type=join" class="btn btn-cta btn-secondary">Join T2T</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="img/T2Thomelogo.png" alt="Teen 2 Tycoon" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                    <p>Creating Employers from Teenagers</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/teen2tycoon.officials" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:t2t.em.officials@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+917506038601"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.snapchat.com/add/t2t.officials" target="_blank" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="https://youtube.com/@teen2tycoon.officials" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbCG9bRFnSz6RM1IGz3l" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="footer-dropdown">
+                            <a href="#">Events ▾</a>
+                            <div class="footer-dropdown-content">
+                                <a href="skill-fest.html">Skill Fest</a>
+                                <a href="summercamp.html">Summer Camp</a>
+                                <a href="euforic.html">Euforic</a>
+                                <a href="dream-campus.html">Dream Campus</a>
+                            </div>
+                        </li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Pant Nagar, Ghatkopar East, Mumbai - 77</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+917506038601">+91 7506038601</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:t2t.em.officials@gmail.com">t2t.em.officials@gmail.com</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/teen2tycoon.officials" target="_blank">@teen2tycoon.officials</a></li>
+                        <li><i class="fab fa-snapchat-ghost"></i> <a href="https://www.snapchat.com/add/t2t.officials" target="_blank">@t2tofficials</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://whatsapp.com/channel/0029VbCG9bRFnSz6RM1IGz3l" target="_blank">WhatsApp Channel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Teen 2 Tycoon. All Rights Reserved.</p>
+                <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 5px;">
+                    <a href="t2t-analytics.html" style="color: inherit; text-decoration: none;">📊</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/3d-effects.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

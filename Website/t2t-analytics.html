@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Teen 2 Tycoon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics 4 -->
+    <!-- Replace GA_MEASUREMENT_ID with your actual measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <style>
+        /* Teen 2 Tycoon Theme Colors */
+        :root {
+            --primary-color: #1D4ED8;           /* Royal Blue */
+            --primary-dark: #1E40AF;            /* Royal Blue Darker */
+            --secondary-color: #F9A825;         /* Golden Yellow */
+            --accent-color: #F57F17;            /* Deep Gold */
+            --dark-color: #0A0E1A;              /* Dark Navy Blue */
+            --midnight-blue: #0F1C3F;           /* Midnight Blue */
+            --cyan-highlight: #60A5FA;          /* Cyan Highlight */
+            --light-color: #f8f9fa;
+            --text-color: #D1D5DB;              /* Light Grey */
+            --text-light: #9CA3AF;              /* Lighter grey */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-color) 0%, var(--midnight-blue) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(15, 28, 63, 0.95) 0%, rgba(10, 14, 26, 0.98) 100%);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 1px solid rgba(29, 78, 216, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(249, 168, 37, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
+            opacity: 0.5;
+        }
+
+        .dashboard-header * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .dashboard-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.15) 0%, rgba(15, 28, 63, 0.8) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(29, 78, 216, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(29, 78, 216, 0.3);
+            border-color: rgba(249, 168, 37, 0.6);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(249, 168, 37, 0.5);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .details-section {
+            padding: 30px;
+            border-top: 1px solid rgba(29, 78, 216, 0.3);
+            background: linear-gradient(180deg, rgba(10, 14, 26, 0.5) 0%, rgba(15, 28, 63, 0.3) 100%);
+        }
+
+        .details-section h3 {
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, rgba(15, 28, 63, 0.6) 0%, rgba(10, 14, 26, 0.8) 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(29, 78, 216, 0.3);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(29, 78, 216, 0.2);
+            color: var(--text-color);
+        }
+
+        .data-table tr:hover {
+            background: rgba(29, 78, 216, 0.1);
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(29, 78, 216, 0.3);
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(29, 78, 216, 0.4);
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+        }
+
+        .no-data {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(249, 168, 37, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(249, 168, 37, 0.3);
+            z-index: 10;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            background: rgba(249, 168, 37, 0.4);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(249, 168, 37, 0.3);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .details-section {
+                padding: 20px;
+            }
+
+            .back-link {
+                top: 15px;
+                left: 15px;
+                padding: 12px 16px;
+                font-size: 0.85rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 20px;
+            }
+
+            .stat-card i {
+                font-size: 2.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Website
+            </a>
+            <h1><i class="fas fa-chart-line"></i> Analytics Dashboard</h1>
+            <p>Teen 2 Tycoon Website Performance</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-number" id="totalSessions">0</div>
+                <div class="stat-label">Total Sessions</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-eye"></i>
+                <div class="stat-number" id="totalPageViews">0</div>
+                <div class="stat-label">Page Views</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-number" id="avgTimeSpent">0</div>
+                <div class="stat-label">Avg. Time (min)</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-mouse-pointer"></i>
+                <div class="stat-number" id="totalClicks">0</div>
+                <div class="stat-label">Button Clicks</div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h3><i class="fas fa-file-alt"></i> Most Popular Pages</h3>
+            <table class="data-table" id="pageViewsTable">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Views</th>
+                        <th>Avg. Time</th>
+                    </tr>
+                </thead>
+                <tbody id="pageViewsBody">
+                    <tr><td colspan="3" class="no-data">Loading data...</td></tr>
+                </tbody>
+            </table>
+
+            <h3><i class="fas fa-click"></i> Button Interactions</h3>
+            <table class="data-table" id="clicksTable">
+                <thead>
+                    <tr>
+                        <th>Button/Link</th>
+                        <th>Clicks</th>
+                    </tr>
+                </thead>
+                <tbody id="clicksBody">
+                    <tr><td colspan="2" class="no-data">Loading data...</td></tr>
+                </tbody>
+            </table>
+
+            <button class="refresh-btn" onclick="loadAnalyticsData()">
+                <i class="fas fa-sync-alt"></i> Refresh Data
+            </button>
+
+            <div class="last-updated" id="lastUpdated">
+                Last updated: Loading...
+            </div>
+        </div>
+    </div>
+
+    <script src="js/analytics.js"></script>
+    <script>
+        function loadAnalyticsData() {
+            // Get analytics data
+            const stats = T2TAnalytics.getStats();
+            const timeData = JSON.parse(localStorage.getItem('t2t-time-spent') || '{}');
+            
+            // Update summary cards
+            document.getElementById('totalSessions').textContent = stats.totalSessions || 0;
+            
+            // Calculate total page views
+            const totalViews = Object.values(stats.pageViews).reduce((sum, views) => sum + views, 0);
+            document.getElementById('totalPageViews').textContent = totalViews;
+            
+            // Calculate average time spent (in minutes)
+            const totalTime = Object.values(timeData).reduce((sum, time) => sum + time, 0);
+            const avgTime = totalViews > 0 ? Math.round(totalTime / totalViews / 60 * 10) / 10 : 0;
+            document.getElementById('avgTimeSpent').textContent = avgTime;
+            
+            // Calculate total button clicks
+            const totalClicks = Object.values(stats.buttonClicks).reduce((sum, clicks) => sum + clicks, 0);
+            document.getElementById('totalClicks').textContent = totalClicks;
+            
+            // Update page views table
+            const pageViewsBody = document.getElementById('pageViewsBody');
+            if (Object.keys(stats.pageViews).length === 0) {
+                pageViewsBody.innerHTML = '<tr><td colspan="3" class="no-data">No page view data yet</td></tr>';
+            } else {
+                const sortedPages = Object.entries(stats.pageViews)
+                    .sort(([,a], [,b]) => b - a)
+                    .map(([page, views]) => {
+                        const pageName = page.replace('.html', '').replace('index', 'Home');
+                        const timeSpent = timeData[page] || 0;
+                        const avgPageTime = views > 0 ? Math.round(timeSpent / views) : 0;
+                        return `
+                            <tr>
+                                <td>${pageName}</td>
+                                <td>${views}</td>
+                                <td>${avgPageTime}s</td>
+                            </tr>
+                        `;
+                    });
+                pageViewsBody.innerHTML = sortedPages.join('');
+            }
+            
+            // Update clicks table
+            const clicksBody = document.getElementById('clicksBody');
+            if (Object.keys(stats.buttonClicks).length === 0) {
+                clicksBody.innerHTML = '<tr><td colspan="2" class="no-data">No button click data yet</td></tr>';
+            } else {
+                const sortedClicks = Object.entries(stats.buttonClicks)
+                    .sort(([,a], [,b]) => b - a)
+                    .map(([button, clicks]) => `
+                        <tr>
+                            <td>${button}</td>
+                            <td>${clicks}</td>
+                        </tr>
+                    `);
+                clicksBody.innerHTML = sortedClicks.join('');
+            }
+            
+            // Update last updated time
+            document.getElementById('lastUpdated').textContent = 
+                `Last updated: ${new Date().toLocaleString()}`;
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadAnalyticsData);
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadAnalyticsData, 30000);
+    </script>
+</body>
+</html>

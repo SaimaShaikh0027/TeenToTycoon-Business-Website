@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Teen 2 Tycoon | T2T</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@splinetool/viewer@1.0.54/build/spline-viewer.js"></script>
+    
+    <!-- Google Analytics 4 -->
+    <!-- Replace GA_MEASUREMENT_ID with your actual measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <style>
+        /* Additional styles for Services page */
+        .services-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 150px 20px 60px;
+            position: relative;
+        }
+        
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 60%);
+        }
+        
+        .services-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .services-hero p {
+            font-size: 22px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-detail-section {
+            padding: 80px 0;
+        }
+        
+        .service-detail-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 60px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-detail-icon {
+            flex: 0 0 200px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+        }
+        
+        .service-detail-content {
+            flex: 1;
+        }
+        
+        .service-detail-content h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .service-detail-content .service-tag {
+            font-size: 16px;
+            color: #f093fb;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .service-detail-content .service-full-description {
+            font-size: 17px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .service-features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .service-feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-feature-item i {
+            color: #667eea;
+        }
+        
+        .service-detail-card .btn {
+            margin-top: 10px;
+        }
+        
+        .alt-layout {
+            flex-direction: row-reverse;
+        }
+        
+        .alt-layout .service-detail-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 20px 50px rgba(240, 147, 251, 0.4);
+        }
+        
+        @media (max-width: 1024px) {
+            .service-detail-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-detail-icon {
+                flex: 0 0 150px;
+                width: 150px;
+                height: 150px;
+                font-size: 60px;
+            }
+            
+            .service-features-list {
+                justify-content: center;
+            }
+            
+            .alt-layout {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 42px;
+            }
+            
+            .service-detail-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/T2Thomelogo.png" alt="Teen 2 Tycoon" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Events</a>
+                    <div class="dropdown-content">
+                        <a href="skill-fest.html">Skill Fest</a>
+                        <a href="summercamp.html">Summer Camp</a>
+                        <a href="euforic.html">Euforic</a>
+                        <a href="dream-campus.html">Dream Campus</a>
+                    </div>
+                </li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="services-hero-content">
+            <h1>Services & Initiatives</h1>
+            <p>Empowering students and young leaders to thrive in the real world</p>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="service-detail-section">
+        <div class="container">
+            <!-- Entrepreneurship Development Program -->
+            <div class="service-detail-card" id="edp">
+                <div class="service-detail-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Entrepreneurship Development Program</h2>
+                    <p class="service-tag">Hands-on Business Training & Startup Incubation</p>
+                    <p class="service-full-description">
+                        Our Entrepreneurship Development Program provides hands-on business training, startup simulations, and idea incubations that help teenagers understand the core of entrepreneurship through action learning. We believe in learning by doing, providing young entrepreneurs with practical experience that goes beyond traditional classroom education.
+                    </p>
+                    <p class="service-full-description">
+                        The program is designed to transform theoretical knowledge into practical skills, enabling students to launch their own ventures with confidence and clarity.
+                    </p>
+                    <div class="service-features-list">
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Business Simulations</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Startup Incubation</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Idea Validation</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Mentorship</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Funding Guidance</span>
+                    </div>
+                    <a href="contact.html?type=service&service=edp" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- Event Management & Business Networking -->
+            <div class="service-detail-card alt-layout" id="events">
+                <div class="service-detail-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Event Management & Business Networking</h2>
+                    <p class="service-tag">Youth Summits, Workshops & Corporate Collaborations</p>
+                    <p class="service-full-description">
+                        We organize youth summits, workshops, and corporate collaborations that promote entrepreneurship awareness and business exchange among young leaders. Our events provide valuable networking opportunities and real-world exposure to the business world.
+                    </p>
+                    <p class="service-full-description">
+                        From conceptualization to execution, we manage every aspect of events, ensuring professional delivery and maximum impact for all participants.
+                    </p>
+                    <div class="service-features-list">
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Youth Summits</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Professional Workshops</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Corporate Events</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Networking Sessions</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Business Exchange</span>
+                    </div>
+                    <a href="contact.html?type=service&service=events" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- Social Media & Brand Solutions -->
+            <div class="service-detail-card" id="social">
+                <div class="service-detail-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <div class="service-detail-content">
+                    <h2>Social Media & Brand Solutions</h2>
+                    <p class="service-tag">Content Strategy, Branding & Digital Marketing</p>
+                    <p class="service-full-description">
+                        We provide content strategy, branding, and social media management for startups, creators, and small enterprises to help them scale effectively. Our expert team helps build strong brand identities and digital presence.
+                    </p>
+                    <p class="service-full-description">
+                        From social media management to complete brand overhauls, we offer comprehensive digital solutions tailored to each client's unique needs.
+                    </p>
+                    <div class="service-features-list">
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Brand Strategy</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Social Media Management</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Content Creation</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Digital Marketing</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Analytics & Reporting</span>
+                    </div>
+                    <a href="contact.html?type=service&service=social" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+
+            <!-- T2T Education Honour (Summer Camp) -->
+            <div class="service-detail-card alt-layout" id="education">
+                <div class="service-detail-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="service-detail-content">
+                    <h2>T2T Education Honour</h2>
+                    <p class="service-tag">NEP 2020 & STEM Aligned Summer Program</p>
+                    <p class="service-full-description">
+                        An exclusive summer program aligned with NEP 2020 and STEM principles, offering 29 creative and skill-based activities focused on innovation, leadership, and entrepreneurial mindset building. This comprehensive program prepares students for the future.
+                    </p>
+                    <p class="service-full-description">
+                        The T2T Education Honour combines fun learning with skill development, ensuring students get the best possible preparation for their academic and professional journey.
+                    </p>
+                    <div class="service-features-list">
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> 29 Skill Activities</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> NEP 2020 Aligned</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> STEM Principles</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Innovation Focus</span>
+                        <span class="service-feature-item"><i class="fas fa-check-circle"></i> Leadership Training</span>
+                    </div>
+                    <a href="contact.html?type=service&service=education" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Choose a service and take your first step towards success</p>
+                <div class="cta-buttons">
+                    <a href="contact.html?type=enquire" class="btn btn-cta btn-primary">Enquire Now</a>
+                    <a href="contact.html?type=join" class="btn btn-cta btn-secondary">Join T2T</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="img/T2Thomelogo.png" alt="Teen 2 Tycoon" class="footer-logo" style="height: 60px; margin-bottom: 20px;">
+                    <p>Creating Employers from Teenagers</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/teen2tycoon.officials" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:t2t.em.officials@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+917506038601"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.snapchat.com/add/t2t.officials" target="_blank" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="https://youtube.com/@teen2tycoon.officials" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbCG9bRFnSz6RM1IGz3l" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li class="footer-dropdown">
+                            <a href="#">Events ▾</a>
+                            <div class="footer-dropdown-content">
+                                <a href="skill-fest.html">Skill Fest</a>
+                                <a href="summercamp.html">Summer Camp</a>
+                                <a href="euforic.html">Euforic</a>
+                                <a href="dream-campus.html">Dream Campus</a>
+                            </div>
+                        </li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Pant Nagar, Ghatkopar East, Mumbai - 77</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+917506038601">+91 7506038601</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:t2t.em.officials@gmail.com">t2t.em.officials@gmail.com</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/teen2tycoon.officials" target="_blank">@teen2tycoon.officials</a></li>
+                        <li><i class="fab fa-snapchat-ghost"></i> <a href="https://www.snapchat.com/add/t2t.officials" target="_blank">@t2tofficials</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://whatsapp.com/channel/0029VbCG9bRFnSz6RM1IGz3l" target="_blank">WhatsApp Channel</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Teen 2 Tycoon. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/3d-effects.js"></script>
+    <script src="js/analytics.js"></script>
+    <script>
+        // Scroll to specific service if hash exists
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+            if (hash) {
+                setTimeout(() => {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
